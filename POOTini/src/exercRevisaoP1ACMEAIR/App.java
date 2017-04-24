@@ -66,12 +66,7 @@ public class App {
 		
 		System.out.println("\n" + lista.relatorio());
 		
-		System.out.println("\nCusto total: " + lista.custoTotal());
-		
-		
-		
-		
-		
+		System.out.println("\nCusto total: " + lista.custoTotal());	
 		
 	}
 

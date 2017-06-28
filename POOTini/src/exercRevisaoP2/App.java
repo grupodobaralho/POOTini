@@ -22,7 +22,7 @@ public class App {
 		// exercicio2();
 		// exercicio3();
 		// exercicio4();
-		//exercicio5();
+		// exercicio5();
 	}
 
 	public static void exercicio1() {
@@ -108,35 +108,55 @@ public class App {
 			System.out.println(e.getEmail());
 		});
 
-		System.out.println("\nMedia de Idade dos homens: ");
-		List<Integer> idades = new ArrayList<>();
-		lista.stream().filter(e -> e.getGenero().equals(Genero.MASC)).forEach(e -> {
-			idades.add(e.getIdade());
-		});
-		IntSummaryStatistics stats = idades.stream().mapToInt(e -> e).summaryStatistics();
-		System.out.println(stats.getAverage());
+		double idadeMediaH = lista.stream().filter(p -> p.getGenero() == Person.Genero.MASC).mapToInt(Person::getIdade)
+				.average().getAsDouble();
+
+		System.out.println("Idade média dos homens: " + idadeMediaH);
+
+		//
+		// System.out.println("\nMedia de Idade dos homens: ");
+		// List<Integer> idades = new ArrayList<>();
+		// lista.stream()
+		// .filter(e -> e.getGenero()
+		// .equals(Genero.MASC))
+		// .forEach(e -> {
+		// idades.add(e.getIdade());
+		// });
+		// IntSummaryStatistics stats = idades.stream().mapToInt(e ->
+		// e).summaryStatistics();
+		// System.out.println(stats.getAverage());
+
 	}
 
 	public static void exercicio4() {
 		Deque<Integer> deque = new ArrayDeque<>();
-		deque.addLast(5); deque.addLast(1); deque.addLast(-500);deque.addLast(10); 
-		deque.addLast(-4); deque.addLast(0); deque.addLast(60);deque.addLast(2);
-		deque.addLast(-2); deque.addLast(-8); deque.addLast(-7);deque.addLast(600);
-		System.out.println("Original: "+deque+'\n');	
-		System.out.println("Modificada: "+trocaSinal(deque));
+		deque.addLast(5);
+		deque.addLast(1);
+		deque.addLast(-500);
+		deque.addLast(10);
+		deque.addLast(-4);
+		deque.addLast(0);
+		deque.addLast(60);
+		deque.addLast(2);
+		deque.addLast(-2);
+		deque.addLast(-8);
+		deque.addLast(-7);
+		deque.addLast(600);
+		System.out.println("Original: " + deque + '\n');
+		System.out.println("Modificada: " + trocaSinal(deque));
 	}
 
 	public static Deque<Integer> trocaSinal(Deque<Integer> dados) {
 		int tamanho = dados.size();
-		for(int i=0; i<tamanho; i++){
+		for (int i = 0; i < tamanho; i++) {
 			Integer aux = dados.removeLast();
 			aux = aux * -1;
 			dados.addFirst(aux);
-		}		
+		}
 		return dados;
 	}
 
-	public static void exercicio5(){
+	public static void exercicio5() {
 		Funcionario f1 = new Funcionario("Amauri", "Prefeito");
 		Funcionario f2 = new Funcionario("Amarildo", "Deputado");
 		Funcionario f3 = new Funcionario("Amaurelo", "Prefeito");
@@ -144,10 +164,17 @@ public class App {
 		Funcionario f5 = new Funcionario("Amaurroca", "Deputado");
 		Funcionario f6 = new Funcionario("Amaurilha", "Deputado");
 		Funcionario f7 = new Funcionario("Amara", "Deputado");
-		Funcionario f8 = new Funcionario("Amaurando", "Prefeito");		
-		Cadastro ca = new Cadastro(); ca.add(f1);ca.add(f2);ca.add(f3);
-		ca.add(f4);ca.add(f5);ca.add(f6);ca.add(f7);ca.add(f8);	
-		
-		ca.exibeTotalPorCargo();				
+		Funcionario f8 = new Funcionario("Amaurando", "Prefeito");
+		Cadastro ca = new Cadastro();
+		ca.add(f1);
+		ca.add(f2);
+		ca.add(f3);
+		ca.add(f4);
+		ca.add(f5);
+		ca.add(f6);
+		ca.add(f7);
+		ca.add(f8);
+
+		ca.exibeTotalPorCargo();
 	}
 }
